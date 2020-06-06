@@ -105,35 +105,35 @@
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=T" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-users fa-fw"></i>
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=1" role="button" aria-haspopup="true" aria-expanded="false">
                 1
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=2" role="button" aria-haspopup="true" aria-expanded="false">
                 2
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=3" role="button" aria-haspopup="true" aria-expanded="false">
                 3
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=4" role="button" aria-haspopup="true" aria-expanded="false">
                 4
               </a>
             </li>

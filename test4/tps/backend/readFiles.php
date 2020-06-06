@@ -1,11 +1,11 @@
 <?php
 
-function readFiles($repo, $project){
+function readFiles($names, $project){
     
     $githubFolder = "../github_tp2";
 
     $urlSite = "http://www.colaboratorio3.org/_tps/";
-    $directory = $githubFolder . "/" . $repo . "_" . $project . "/" . $project . "-tp2";
+    $directory = $githubFolder . "/" . $names . "_" . $project . "/tp2";
         
     $files  = scandir($directory);
     $joinedFiles = "";
@@ -20,6 +20,8 @@ function readFiles($repo, $project){
 
     //Transform loadImage
     $joinedFiles = preg_replace("/loadImage\(\"/","loadImage(\"". $directory . "/data/", $joinedFiles);
-    
+    //Replace loadFont   
+    $joinedFiles = preg_replace("/loadFont\(\".+\"\);/","loadFont(\"../tps/fonts/OpenSans-Regular.ttf\");", $joinedFiles);
+
     return $joinedFiles;
 }

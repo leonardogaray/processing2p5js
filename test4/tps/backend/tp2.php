@@ -7,10 +7,10 @@ try {
     $where = " ass.id IN (16) "; //Id from TP
     
     if($userId != ""){
-        $where = " AND u.id = " . $userId;
+        $where .= " AND u.id = " . $userId;
     }else if($groupId != ""){
         if($groupId != "T")
-            $where = " AND g.id = " . $groupId;
+            $where .= " AND g.id = " . $groupId;
     }
 
     $sql = "SELECT DISTINCT ass.id gid, u.id uid, u.lastname, u.firstname, assot.onlinetext 
@@ -38,9 +38,10 @@ try {
         $project = preg_replace("/https\:\/\/github.com\/(\w+)\/(\w+)\/tree\/tp2/", '$2', $github);
         
         $result[$index]["github"] = $github;
+        $result[$index]["names"] = strtolower(str_replace(' ','',preg_replace('/[^A-Za-z0-9.]+/','',$result[$index]["lastname"] . $result[$index]["firstname"])));
         $result[$index]["repo"] = $repo;
         $result[$index]["project"] = $project;
-        $result[$index]["processed_onlinetext"] = readFiles($repo, $project);
+        $result[$index]["processed_onlinetext"] = readFiles($result[$index]["names"], $project);
     }
 
 }

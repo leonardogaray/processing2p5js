@@ -6,10 +6,12 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">TP #2</h1>
+        <!--
         <a href="#" id="download-github" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i> 
             Downlaod All GITHUB
         </a>
+        -->
     </div>
 
     <?php foreach($result as $row) { ?>
@@ -22,6 +24,10 @@
                     <a target="_blank" href="<?php echo $row["github"] ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                         <i class="fas fa-download fa-sm text-white-50"></i> 
                         Github
+                    </a>
+                    <a href="javascript:reload('<?php echo $row["uid"]; ?>')" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-refresh fa-sm text-white-50"></i> 
+                        Reload
                     </a>
                 </div>
                 <div class="card-body">
