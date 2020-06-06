@@ -19,7 +19,7 @@ function readFiles($names, $project){
     }
 
     //Transform loadImage
-    $joinedFiles = preg_replace("/loadImage\(\"/","loadImage(\"". $directory . "/data/", $joinedFiles);
+    $joinedFiles = preg_replace("/loadImage\s?\(\"/","loadImage(\"". $directory . "/data/", $joinedFiles);
     //Replace loadFont   
     $joinedFiles = preg_replace("/loadFont\(\".+\"\);/","loadFont(\"../tps/fonts/OpenSans-Regular.ttf\");", $joinedFiles);
 

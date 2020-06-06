@@ -3,17 +3,17 @@ ini_set('default_charset', 'utf-8');
 
 function processing2p5js($containerName, $pde){
     $pWords = "/(catch|class|delay|draw|exit|extends|false|final|implements|import|loop|new|noLoop|null|popStyle|private|public|pushStyle|redraw|return|setup|size|static|super|this|true|try|void|cursor|focused|frameCount|frameRate|frameRate|height|noCursor|online|screen|width|boolean|byte|char|color|double|float|int|long|Array|ArrayList|HashMap|Object|String|XMLElement|binary|boolean|byte|char|float|hex|int|str|unbinary|unhex|join|match|matchAll|nf|nfc|nfp|nfs|split|splitTokens|trim|Array Functions|append|arrayCopy|concat|expand|reverse|shorten|sort|splice|subset|for|while|break|case|continue|default|else|if|switch|PShape|arc|ellipse|line|point|quad|rect|triangle|bezier|bezierDetail|bezierPoint|bezierTangent|curve|curveDetail|curvePoint|curveTangent|curveTightness|box|sphere|sphereDetail|ellipseMode|noSmooth|rectMode|smooth|strokeCap|strokeJoin|strokeWeight|beginShape|bezierVertex|curveVertex|endShape|texture|textureMode|vertex|loadShape|shape|shapeMode|mouseButton|mouseClicked|mouseDragged|mouseMoved|mousePressed|mousePressed|mouseReleased|mouseX|mouseY|pmouseX|pmouseY|key|keyCode|keyPressed|keyPressed|keyReleased|keyTyped|BufferedReader|createInput|createReader|loadBytes|loadStrings|open|selectFolder|selectInput|link|param|status|day|hour|millis|minute|month|second|year|print|println|save|saveFrame|PrintWriter|beginRaw|beginRecord|createOutput|createWriter|endRaw|endRecord|saveBytes|saveStream|saveStrings|selectOutput|applyMatrix|popMatrix|printMatrix|pushMatrix|resetMatrix|rotate|rotateX|rotateY|rotateZ|scale|shearX|shearY|translate|ambientLight|directionalLight|lightFalloff|lightSpecular|lights|noLights|normal|pointLight|spotLight|beginCamera|camera|endCamera|frustum|ortho|perspective|printCamera|printProjection|modelX|modelY|modelZ|screenX|screenY|screenZ|ambient|emissive|shininess|specular|background|colorMode|fill|noFill|noStroke|stroke|alpha|blendColor|blue|brightness|color|green|hue|lerpColor|red|saturation|PImage|createImage|image|imageMode|loadImage|noTint|requestImage|tint|blend|copy|filter|get|loadPixels|pixels[]|set|updatePixels|PGraphics|createGraphics|hint|PFont|createFont|loadFont|text|textFont|textAlign|textLeading|textMode|textSize|textWidth|textAscent|textDescent|PVector|abs|ceil|constrain|dist|exp|floor|lerp|log|mag|map|max|min|norm|pow|round|sq|sqrt|acos|asin|atan|atan2|cos|degrees|radians|sin|tan|noise|noiseDetail|noiseSeed|random|randomSeed|HALF_PI|PI|QUARTER_PI|TWO_PI)/";
-    $pFunctions = "/((resizeCanvas|sin|cos|endShape|vertex|bezierDetail|pop|push|rotate|textAlign|bezier|translate|random|beginShape|textSize|quad|strokeCap|point|colorMode|smooth|rectMode|line|circle|ellipseMode|fill|ellipse|createCanvas|background|noFill|stroke|noStroke|triangle|strokeWeight|text|rect|arc|radians|loadImage|image|dist|loadFont|loadText|textFont|noCursor|cursor|loop|noLoop|map|noise)(\s){0,}\()/";
-    $pVars = "/(frameCount|BOTTOM|CLOSE|SQUARE|CORNERS|CORNER|ROUND|mouseX|mouseY|CENTER|TWO_PI|HALF_PI|PIE|PI|QUARTER|RGB|width|height|HSB|LEFT_ARROW|RIGHT_ARROW|UP_ARROW|DOWN_ARROW|key|RIGHT|LEFT|TOP)/";
-   
+    $pFunctions = "/((tint|resizeCanvas|sin|cos|endShape|vertex|bezierDetail|pop|push|rotate|textAlign|bezier|translate|random|beginShape|textSize|quad|strokeCap|point|colorMode|smooth|rectMode|line|circle|ellipseMode|fill|ellipse|createCanvas|background|noFill|stroke|noStroke|triangle|strokeWeight|text|rect|arc|radians|loadImage|image|dist|loadFont|loadText|textFont|noCursor|cursor|loop|noLoop|map|noise)(\s){0,}\()/";
+    $pVars = "/(\=|\s|\+|\-|\*|\/|\(|\;|\,)?(frameCount|BOTTOM|CLOSE|SQUARE|CORNERS|CORNER|ROUND|mouseX|mouseY|CENTER|TWO_PI|HALF_PI|PIE|PI|QUARTER|RGB|width|height|HSB|LEFT_ARROW|RIGHT_ARROW|UP_ARROW|DOWN_ARROW|key|RIGHT|LEFT|TOP)(\=|\s|\+|\-|\*|\/|\)|\;|,)/";
+    $pMainFunctions = "setup|draw|keyPressed|mousePressed";
+
+    //HTML Problems
     $pde = str_replace("<br>", "", $pde);
     $pde = str_replace("<p>", "", $pde);
     $pde = str_replace("</p>", "\n", $pde);
     $pde = str_replace("&nbsp;", "", $pde);
     $pde = preg_replace("/\/\/.+\n/","", $pde);//Remove comments
-
     $pde = strip_tags($pde);
-    
     $pde = str_replace("&lt;", "<", $pde);
     $pde = str_replace("&gt;", ">", $pde);
     
@@ -55,11 +55,11 @@ function processing2p5js($containerName, $pde){
     else
         $p5jsReturn = substr_replace($p5jsReturn, '', 0, strpos($p5jsReturn, "var "));
     
-    // Replace function definitions
-    $p5jsReturn = preg_replace("/function\s((\w|\d)+)(\s?\(|\()([^\)]*)\)\s?\{/", "\n p.$1 = function($4) {", $p5jsReturn); 
+    // Replace function Main definitions
+    $p5jsReturn = preg_replace("/function\s(" . $pMainFunctions . ")(\s?\(|\()([^\)]*)\)\s?\{/", "\n p.$1 = function($4) {", $p5jsReturn); 
     
     $p5jsReturn = preg_replace($pFunctions," p.$1", $p5jsReturn);
-    $p5jsReturn = preg_replace($pVars,"p.$1", $p5jsReturn);
+    $p5jsReturn = preg_replace($pVars,"$1p.$2$3", $p5jsReturn);
     $p5jsReturn = preg_replace("/\b(color)(\s){0,}\(/","p.$1(", $p5jsReturn);
     $p5jsReturn = preg_replace("/(println(\s)?\(.+\);)/","", $p5jsReturn);
     

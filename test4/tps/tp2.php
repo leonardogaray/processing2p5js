@@ -25,6 +25,10 @@
                         <i class="fas fa-download fa-sm text-white-50"></i> 
                         Github
                     </a>
+                    <a target="_blank" href="?userId=<?php echo $row["uid"]; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-user fa-sm text-white-50"></i> 
+                        Single
+                    </a>
                     <a href="javascript:reload('<?php echo $row["uid"]; ?>')" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                         <i class="fas fa-refresh fa-sm text-white-50"></i> 
                         Reload

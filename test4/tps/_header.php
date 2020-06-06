@@ -56,7 +56,7 @@
 
       <!-- Nav Item - TP1 -->
       <li class="nav-item">
-        <a class="nav-link" href="tp2.php">
+        <a class="nav-link" href="tp2.php?groupId=1">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>TP #2</span></a>
       </li>
