@@ -1,0 +1,7 @@
+<?php 
+
+// Rename to database.php
+$servername = "xxx";
+$dbname = "yyy";
+$username = "mmm";
+$password = "zzzz";
