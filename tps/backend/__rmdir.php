@@ -1,6 +1,6 @@
 <?php
 
-$githubFolder = "/var/www/html/aula/_tps/github_tp2_rec";
+$githubFolder = "/var/www/html/aula/_tps/github_tp1";
 
 function deleteDir($dirPath) {
     if (! is_dir($dirPath)) {

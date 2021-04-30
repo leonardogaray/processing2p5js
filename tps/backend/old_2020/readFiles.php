@@ -1,11 +1,12 @@
 <?php
+require '../conf/const.php';
 
 function readFiles($names, $project){
     
-    $githubFolder = "../github_tp3";
+    $githubFolder = "../github_" . $GLOBALS["tp_global"];
 
     $urlSite = "http://www.colaboratorio3.org/_tps/";
-    $directory = $githubFolder . "/" . $names . "_" . $project . "/tp3";
+    $directory = $githubFolder . "/" . $names . "_" . $project . "/tpfinal";
         
     $files  = scandir($directory);
     $joinedFiles = "";

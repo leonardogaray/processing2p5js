@@ -49,23 +49,9 @@
 
       <!-- Nav Item - TP1 -->
       <li class="nav-item">
-        <a class="nav-link" href="tp1.php">
+        <a class="nav-link" href="tp1.php?groupId=7">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>TP #1</span></a>
-      </li>
-
-      <!-- Nav Item - TP2 -->
-      <li class="nav-item">
-        <a class="nav-link" href="tp2.php?groupId=1">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>TP #2</span></a>
-      </li>
-
-      <!-- Nav Item - TP3 -->
-      <li class="nav-item">
-        <a class="nav-link" href="tp3.php?groupId=1">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>TP #3</span></a>
       </li>
 
       <!-- Divider -->
@@ -120,28 +106,28 @@
             -->
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="?groupId=1" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=7" role="button" aria-haspopup="true" aria-expanded="false">
                 1
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="?groupId=2" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=8" role="button" aria-haspopup="true" aria-expanded="false">
                 2
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="?groupId=3" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=9" role="button" aria-haspopup="true" aria-expanded="false">
                 3
               </a>
             </li>
 
             <!-- Nav Item -->
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link" href="?groupId=4" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="?groupId=10" role="button" aria-haspopup="true" aria-expanded="false">
                 4
               </a>
             </li>

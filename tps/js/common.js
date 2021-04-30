@@ -9,7 +9,7 @@ function executeP5JS(id){
 
     $.ajax({
         type: "POST",
-        url: "backend/processing2p5js.php",
+        url: "backend/__processing2p5js.php",
         data: {
             "containerName": uid,
             "pde": $("#" + pid).text(),
@@ -41,4 +41,13 @@ function executeP5JS(id){
 
 function onError(result){
     console.error("Hubo un error:", result);
+}
+
+function copyToClipboard(id) {
+    const copyText = document.getElementById(id).textContent;
+    const textArea = document.createElement('textarea');
+    textArea.textContent = copyText;
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy");
 }

@@ -1,7 +1,9 @@
 <?php 
+error_reporting(E_ALL);
 ini_set('default_charset', 'utf-8');
+ini_set('display_errors', 'On');
 
-require '../conf/database.php';
+require dirname(__FILE__) . '/../conf/database.php';
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

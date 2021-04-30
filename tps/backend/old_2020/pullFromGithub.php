@@ -1,14 +1,15 @@
 <?php
-require 'tp3.php';
+require '../conf/const.php';
+require 'tpfinal.php';
 
 //Prevent script to finish
 set_time_limit(0);
 
-$githubFolder = "../../github_tp3";
+$githubFolder = "../../github_" . $tp_global ;
 
 foreach($result as $row){
     try{
-        $githubZip = "https://codeload.github.com/".$row["repo"]."/".$row["project"]."/zip/tp3";
+        $githubZip = "https://codeload.github.com/".$row["repo"]."/".$row["project"] . "/zip/tpfinal";
         
         $directory = $githubFolder . "/" . $row["names"] . "_" . $row["project"];    
         if(!is_dir($directory)){
@@ -19,6 +20,8 @@ foreach($result as $row){
 
         $zipFileName = $directory . "/" . $row["names"] . "_" . $row["project"] . ".zip";
         file_put_contents($zipFileName, fopen($githubZip, 'r'));
+        
+        sleep(10);
 
         $zip = new ZipArchive;
         $res = $zip->open($zipFileName);
@@ -28,7 +31,7 @@ foreach($result as $row){
             echo $directory . "<br>";
             echo $zipFileName . "<br>";
 
-            rename($directory . "/" . $row["project"] . "-tp3", $directory . "/tp3");
+            rename($directory . "/" . $row["project"] . "-" . $tp_global , $directory . "/tpfinal" );
             unlink($zipFileName);
 
             echo 'OK!' . "<br>";
@@ -45,7 +48,7 @@ $rootPath = realpath($githubFolder);
 
 // Initialize archive object
 $zip = new ZipArchive();
-$zip->open('../../tp3_all.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+$zip->open('../../' . $tp_global . '_all.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
 // Create recursive directory iterator
 /** @var SplFileInfo[] $files */
